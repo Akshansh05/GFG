@@ -1,0 +1,50 @@
+class Intersect
+{
+	int intersectPoint(Node headA, Node headB)
+	{
+         // code here
+         Node ptr1 = headA;
+         Node ptr2 = headB;
+         
+         int sz1 = 0,sz2 =0;
+         
+         while(ptr1!=null )
+         {
+             ptr1= ptr1.next;
+             sz1++;
+         }
+         
+         while(ptr2!=null)
+         {
+             ptr2 = ptr2.next;
+             sz2++;
+         }
+         int diff = 0;
+         if(sz1>sz2)
+         {
+           ptr1 = headA;
+           ptr2 = headB;
+           diff = sz1-sz2;
+         }
+         else
+         {
+           ptr1 = headB;
+           ptr2 = headA;
+           diff = sz2 - sz1;
+         }
+         
+         while(diff!=0)
+         {
+             ptr1 = ptr1.next;
+             diff--;
+         }
+         
+         while(ptr1.data != ptr2.data)
+         {
+             ptr1 = ptr1.next;
+             ptr2 = ptr2.next;
+         }
+         
+         return ptr1.data;
+	}
+}
