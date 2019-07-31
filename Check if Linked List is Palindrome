@@ -1,0 +1,27 @@
+class Palindrome
+{
+    // Function to check if linked list is palindrome
+    boolean isPalindrome(Node head) 
+    {
+    Node ptr=head;
+    int count=0;
+    while(ptr!=null){
+        count++;
+        ptr=ptr.next;
+    }
+    Node val[]=new Node[count];
+    int j=0;
+    while(head!=null){
+        val[j++]=head;
+        head=head.next;
+    }
+     
+     for(int i=0;i<count/2;i++){
+         if(val[i].data !=val[count-i-1].data)
+            return false;
+     }
+     return true;
+        
+        
+    }    
+}
