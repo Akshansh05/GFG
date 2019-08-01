@@ -1,0 +1,18 @@
+class LinkedList
+{
+    Node sortedMerge(Node headA, Node headB) {
+     // This is a "method-only" submission. 
+     // You only need to complete this method
+     if(headA == null)
+     return headB;
+     if(headB == null)
+     return headA;
+     if(headA.data>headB.data){
+     headB.next= sortedMerge(headA,headB.next);
+     return headB;
+     }
+     else
+     headA.next=sortedMerge(headA.next,headB);
+     return headA;
+   } 
+}
