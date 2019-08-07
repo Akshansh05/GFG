@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args) throws IOException
+	 {
+	 //code
+	BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	    String val[]=br.readLine().split(" ");
+	    int n=Integer.parseInt(val[0]);
+	    int k=Integer.parseInt(val[1]);
+	    int a[]=new int[n];
+	   StringTokenizer st = new StringTokenizer(br.readLine() , " ");
+	 for(int i=0;i<n;i++){
+	      a[i] = Integer.parseInt(st.nextToken());
+	 }
+	 int sp=0,fp=0;
+	 int interval=k-1;
+	while(sp<n){
+	    fp=sp+interval;
+	    if(fp>n-1)
+	        fp=n-1;
+	   while(fp>=sp){
+	       System.out.print(a[fp]+" ");
+	       fp--;
+	   }
+	   sp=sp+k;
+	}
+	System.out.println();
+	 }
+	 }	  
+}
