@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+	 BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	 int n =Integer.parseInt(br.readLine());
+	 int a[]=new int[n];
+    StringTokenizer st = new StringTokenizer(br.readLine() , " ");
+    for(int i=0;i<n;i++){
+         a[i] = Integer.parseInt(st.nextToken());
+    }
+    int ptr=0,flag=0,Tsum=0,Lsum=0;
+    for(int i=0;i<n;i++)
+        Tsum+=a[i];
+    for(int i=0;i<n;i++){
+        Tsum-=a[i];
+        if(Lsum==Tsum){
+            flag=1;
+            ptr=i;
+        }
+        Lsum+=a[i];    
+    }    
+   
+    if(flag==0)
+    System.out.println("-1");
+    else
+    System.out.println(ptr+1);
+}
+}
+
+}
