@@ -1,0 +1,21 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+	 BufferedReader br =new BufferedReader(new InputStreamReader (System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	     String val=br.readLine();
+	 String s[]=val.split("\\.");
+	 String Q="";
+	for(int i=s.length-1;i>=0;i--){
+	    Q+=s[i]+".";
+	}
+	System.out.println(Q.substring(0,Q.length()-1));
+	 }
+}
+}
