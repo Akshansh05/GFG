@@ -1,0 +1,26 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 long n =sc.nextLong();
+	long m=n-1;
+	if(n==0)
+	    System.out.println("NO");
+	   else{
+	       long res=n&m;
+	       if(res==0)
+	        System.out.println("YES");
+	        else
+	        System.out.println("NO");
+	   }
+	   
+}
+}
+}
