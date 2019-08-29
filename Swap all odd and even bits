@@ -1,0 +1,16 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n=sc.nextInt();
+	 System.out.println(((n&0xaaaaaaaa)>>1) | ((n&0x55555555)<<1));//set bit at even and odd positions respectively,shift and combine them
+	 }
+}
+}
