@@ -12,9 +12,17 @@ class GFG
 	while(t-->0){
 	    br.readLine();
 	    arr=br.readLine().split(" ");
-	    Arrays.sort(arr,((x,y)->(x+y).compareTo(y+x)>0?-1:1));
+	    Arrays.sort(arr,new StringComparator());
 	    System.out.println(String.join("",arr));
 	}
 	
 }
+}
+public class StringComparator  implements Comparator<String>{
+    public int compare(String x,String y){
+        if((x+y).compareTo(y+x)>0)
+            return -1;
+            else
+            return 1;
+    }
 }
