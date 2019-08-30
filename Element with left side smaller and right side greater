@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n=sc.nextInt();
+	 int a[]=new int[n];
+	 for(int i=0;i<n;i++){
+	     a[i]=sc.nextInt();
+	 }
+	 boolean aux[]=new boolean[n];
+	 aux[0]=false;
+	 int max =a[0];
+	 for(int i=1;i<n-1;i++){
+	     if(a[i]<max){
+	         aux[i]=false;
+	     }else{
+	         aux[i]=true;
+	         max=a[i];
+	     }
+	 }
+	 int min=a[n-1];
+	 aux[n-1]=false;
+	 int res=-1;
+	 for(int i=n-2;i>0;i--){
+	     if(aux[i]==true){
+	         if(a[i]>min){
+	             aux[i]=false;
+	         }else{
+	             res=a[i];
+	         }
+	     }
+	     if(a[i]<min)
+	       min=a[i];
+	 }
+	 System.out.println(res);
+	 }
+}
+}
