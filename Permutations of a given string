@@ -1,0 +1,43 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ { ArrayList<String> list=new <String> ArrayList();
+     public  ArrayList<String> findPerm(int l,int r,String s){
+    if(l==r){
+        list.add(s);
+    }else{
+        for(int i=l;i<=r;i++){
+           s= swap(l,i,s);
+           findPerm(l+1,r,s);
+           s=swap(l,i,s);
+        }
+    }
+    return list;
+}
+public  String swap(int l,int r,String s ){
+    char a[]=s.toCharArray();
+    char temp;
+    temp=a[l];
+    a[l]=a[r];
+    a[r]=temp;
+    return String.valueOf(a);
+}
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	     String s=br.readLine();
+	     GFG abc=new GFG();
+	     ArrayList<String> myList=new <String> ArrayList();
+	 myList= abc.findPerm(0,s.length()-1,s);
+	 Collections.sort(myList);
+	 for(String str : myList)
+	    System.out.print(str+" ");
+	  System.out.println();
+	 }
+}
+
+}
