@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+    BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	    String s[]=br.readLine().split(" ");
+	    String a=s[0];
+	    String b=s[1];
+	    int let[]=new int[26];
+	    for(int i=0;i< a.length();i++)
+	        let[a.charAt(i)-'a']++;
+	        
+	    for(int i=0;i< b.length();i++)
+	        let[b.charAt(i)-'a']--;
+	        
+	       int count=0;
+	   for(int i=0;i<let.length;i++){
+	       count+=let[i];
+	   }
+	   if(count==0)
+	    System.out.println("YES");
+	    else
+	     System.out.println("NO");
+	 }
+}
+}
