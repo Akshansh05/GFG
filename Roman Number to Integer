@@ -1,0 +1,49 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	 String s=br.readLine();
+	 int result=0;
+	 for(int i=0;i<s.length();i++){
+	     if(i == s.length()-1)
+	        result+=value(s.charAt(i));
+	        else{
+	            int x=value(s.charAt(i));
+	            int y=value(s.charAt(i+1));
+	            if(y>x)
+	             result-=x;
+	             else
+	             result+=x;
+	        }
+	    
+	 }
+	  System.out.println(result);
+	 }
+}
+public static  int value(char ch){
+    if(ch == 'I')
+        return 1;
+    if(ch == 'V')
+        return 5;
+    if(ch == 'X')
+        return 10;
+    if(ch == 'L')
+        return 50;
+    if(ch == 'C')
+        return 100;
+    if(ch =='D')
+        return 500;
+    if(ch == 'M')  
+        return 1000;
+        
+        return -1;
+}
+}
