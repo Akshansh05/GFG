@@ -1,0 +1,26 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+	   BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	 String a= br.readLine();
+	 String b=br.readLine();
+	 int len=b.length();
+    String clk="";
+    String anti ="";
+    anti+=b.substring(len-2,len)+b.substring(0,len-2);
+    clk+=b.substring(2,len)+b.substring(0,2);
+    if(a.equals(anti) || a.equals(clk))
+        System.out.println(1);
+    else
+        System.out.println(0);
+	 }
+}
+}
