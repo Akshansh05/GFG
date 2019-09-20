@@ -1,3 +1,4 @@
+/*This is a function problem.You only need to complete the function given below*/
 
 class Queues
 {
@@ -13,13 +14,13 @@ class Queues
 	     else{
 	         while(q1.size() !=1)
 	         q2.add(q1.remove());
-	     }
-	     int y =q1.poll();//removes the head or the 1st element and return it
+	     
+	     int y =q1.poll();
 	     while(q2.size()!=0)
 	     q1.add(q2.remove());
 	     
 	     return y;
-	    
+	     }  
     }
 	
     /* The method push to push element into the stack */
