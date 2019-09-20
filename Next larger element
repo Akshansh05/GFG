@@ -1,0 +1,31 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)throws IOException
+	 {
+	 //code
+	 BufferedReader br = new BufferedReader(new
+        InputStreamReader(System.in));
+	 int t=Integer.parseInt(br.readLine());
+	 while(t-->0){
+	 int n=Integer.parseInt(br.readLine());
+	 long a[]=new long[n];
+	 long b[]=new long[n];
+	 String s[]=br.readLine().split(" ");
+	  for(int i=0;i<s.length;i++)
+	        a[i]=Long.parseLong(s[i]);
+	   Stack<Long> st=new  Stack<Long>();
+	   for(int i=n-1;i>=0;i--){
+	      while(!st.isEmpty() && a[i] > st.peek())
+	          st.pop();
+	        b[i]=st.isEmpty() ? -1 :st.peek();
+	        st.push(a[i]);
+	   }
+	   for(int j=0; j<n ;j++)
+	    System.out.print(b[j]+ " ");
+	    System.out.println();
+	 }
+}
+}
