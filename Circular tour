@@ -1,0 +1,21 @@
+class GfG
+{
+    int tour(int petrol[], int distance[])
+    {
+	int start=0,calc=0,left=0;
+	for(int i=0;i<petrol.length;i++){
+	    calc+=petrol[i]-distance[i];
+	    if(calc<0){
+	        start=i+1;
+	        left+=calc;
+	        calc=0;
+	    }
+	}
+	int diff=calc+left;
+	if(diff>0)
+	return start;
+	else
+	return -1;
+	
+    }
+}
