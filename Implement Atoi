@@ -1,0 +1,12 @@
+class GfG
+{
+    int atoi(String str)
+    {
+	// Your code here
+	try{
+	    return Integer.parseInt(str);
+	}catch(Exception e){
+	    return -1;
+	}
+    }
+}
