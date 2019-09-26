@@ -1,0 +1,50 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n1=sc.nextInt();
+	 int n2=sc.nextInt();
+	 int sum=sc.nextInt();
+	 int a[]=new int[n1];
+	 int b[]=new int[n2];
+	 for(int i=0;i<n1;i++)
+	    a[i]=sc.nextInt();
+	 for(int i=0;i<n2;i++)
+	    b[i]=sc.nextInt();
+	  
+	 HashMap<Integer,Integer> map1=new   HashMap<Integer,Integer>();
+	 TreeMap<Integer, Integer> tmap = new TreeMap<Integer, Integer>(); 
+	StringBuffer sb=new StringBuffer("");
+
+	 for(int i=0;i<n1;i++){
+	        map1.put(sum-a[i],a[i]);
+	 }
+	 int key=0,value=0,flag=0;
+	  for(int i=n2-1;i>=0;i--){
+	        if(map1.containsKey(b[i])){
+	              value=b[i];
+	              key=map1.get(b[i]);
+	            tmap.put(key,value);
+	            flag=1;
+	        }
+	       
+	 }
+	 if(flag==1){
+	    for(Map.Entry entry:tmap.entrySet()){
+	        sb.append(entry.getKey()+" "+entry.getValue()+", ");
+	    }
+	    System.out.print(sb.substring(0,sb.length()-2));
+	 }
+	 if(flag==0)
+	    System.out.print(-1);
+	 System.out.println();
+	 }
+}
+}
