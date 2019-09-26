@@ -1,0 +1,8 @@
+class GfG
+{
+    int strstr(String str, String target)
+    {
+       // Your code here
+       return str.indexOf(target);
+    }
+}//Better Use KMP Algorithm for all Index .
