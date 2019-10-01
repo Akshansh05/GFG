@@ -1,0 +1,39 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	    int n=sc.nextInt();
+	    char a[]=new char[n];
+	    char b[]=new char[n];
+	   //Character c = new Character('-1');
+	    for(int i=0;i<n;i++)
+	        a[i]=sc.next().charAt(0);
+    Queue<Character> q=new LinkedList<Character>();
+        int f[]=new int[26];
+        for(int i=0;i<f.length;i++)
+                f[i]=0;
+        for(int i=0;i<n;i++){
+            f[a[i]-'a']++;
+            q.add(a[i]);
+            while(q.size()>0){
+                if(f[q.peek()-'a']>1)
+                    q.remove();
+                else{
+                System.out.print(q.peek()+" ");
+                    break;
+                }
+            }
+            if(q.size()==0)
+            System.out.print("-1 ");
+        }        
+	      System.out.println();  
+	 }
+}
+}
