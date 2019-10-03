@@ -4,7 +4,7 @@ class Tree
          getView(root,1);  
      }
         
-    int maxl=0;
+    int maxl=0;//level reached till now
     void getView(Node root,int level){
         if(root ==null)
             return;
