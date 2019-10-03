@@ -1,0 +1,18 @@
+class Tree
+{ 
+    void leftView(Node root){
+         getView(root,1);  
+     }
+        
+    int maxl=0;
+    void getView(Node root,int level){
+        if(root ==null)
+            return;
+       if(maxl<level){
+           System.out.print(root.data+" ");
+           maxl=level;
+       }
+       getView(root.left,level+1);
+       getView(root.right,level+1);
+    }
+}
