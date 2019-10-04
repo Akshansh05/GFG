@@ -1,0 +1,24 @@
+class Tree
+{
+    
+     /* This function should return tree if passed  tree 
+     is balanced, else false. */
+  boolean flag;
+   int check(Node root){
+       if(root == null)
+        return 0;
+        int a=check(root.left);
+        int b=check(root.right);
+        if(Math.abs(a-b)>1){
+            flag= false;
+        }
+              return 1+Math.max(a,b);
+    }
+      boolean isBalanced(Node root)
+    {
+	// Your code here
+    flag=true;
+	check(root);
+	return flag;
+    }
+}
