@@ -1,0 +1,47 @@
+class GfG
+{
+    public  boolean isIdentical(Node root1, Node root2)
+	{   if(root1 ==null && root2 ==null)
+	        return true;
+	        if(root1 ==null || root2 ==null)
+	        return false;
+	    
+		if(root1.data == root2.data && isIdentical(root1.left,root2.left) &&isIdentical(root1.right,root2.right)){
+		    return true;
+		}
+		return false;
+	}
+    public  boolean isSymmetric(Node root)
+    {   if(root == null)
+            return true;
+       if(checkSymmetric(root.left,root.right)){
+            isSymmetric(root.left);
+            isSymmetric(root.right);
+            return true;
+       }else{
+           return false;
+       }
+    }
+    public  Node getMirror(Node root){
+            if(root == null)
+                return  root;
+                Node left=getMirror(root.left);
+                Node right=getMirror(root.right);
+                
+              Node temp=root.left;
+              root.left=root.right;
+              root.right=temp;
+                return root;
+    }
+    public boolean checkSymmetric(Node root1,Node root2){
+        if(root1 ==null && root2 ==null)
+	        return true;
+	        if(root1 ==null || root2 ==null)
+	        return false;
+        Node root1Mirror= getMirror(root1);
+        if(isIdentical(root1Mirror,root2))
+            return true;
+            else
+            return false;
+    }
+}
