@@ -1,0 +1,28 @@
+class Spiral
+{   int getHeight(Node node){
+    if(node==null)
+    return 0;
+    return 1+Math.max(getHeight(node.left),getHeight(node.right));
+}
+      void printSpiral(Node node) 
+      {int h=getHeight(node);
+      int flag=0;
+      for(int i=0;i<h;i++){
+          if(flag==0)flag=1;
+          else flag=0;
+          getSpiral(node,i,0,flag);
+      }
+          
+      }
+      void getSpiral(Node node,int h,int level,int flag){
+          if(h == level)
+            System.out.print(node.data+" ");
+            if(flag==0){
+                if(node.left!=null)getSpiral(node.left,h,level+1,flag);
+                if(node.right!=null)getSpiral(node.right,h,level+1,flag);
+            }else{
+               if(node.right!=null)getSpiral(node.right,h,level+1,flag);
+              if(node.left!=null)getSpiral(node.left,h,level+1,flag);
+            }
+      }
+}
