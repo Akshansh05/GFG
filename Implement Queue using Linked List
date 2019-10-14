@@ -1,0 +1,33 @@
+class MyQueue
+{
+    QueueNode front, rear;
+    
+    // This function should add an item at
+    // rear
+	void push(int a)
+	{   QueueNode temp = new QueueNode(a);
+       if(front == null ){
+           front=rear=temp;
+       }
+       else{
+           QueueNode f=front;
+           while(f.next !=null){
+               f=f.next;
+           }
+           f.next=temp;
+           rear=temp;
+       }
+        
+	}
+	
+    // This function should remove front
+    // item from queue and should return
+    // the removed item.
+	int pop()
+	{
+       if(front ==null) return -1;
+       int val=front.data;
+       front=front.next;
+       return val;
+	}
+}
