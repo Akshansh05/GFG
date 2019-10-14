@@ -1,0 +1,17 @@
+class Add {
+    
+    // This function will add the numbers represented by two linked lists
+    Node addTwoLists(Node first, Node second) {
+        // Your code here
+        if(first ==null)
+        return second;
+        if(second == null)
+        return first;
+        int a=first.data+second.data;
+        Node temp =new Node(a%10);
+        temp.next=addTwoLists(first.next,second.next);
+        if(a >= 10)
+        temp.next=addTwoLists(temp.next,new Node(1));
+        return temp;
+    }
+}
