@@ -5,7 +5,7 @@ class MyQueue
     // This function should add an item at
     // rear
 	void push(int a)
-	{   QueueNode temp = new QueueNode(a);
+	{   QueueNode temp = new QueueNode(a);//every push creates a new node pointing to null initially
        if(front == null ){
            front=rear=temp;
        }
