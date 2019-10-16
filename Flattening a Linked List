@@ -1,0 +1,31 @@
+class GfG
+{
+    Node flatten(Node root)
+    {
+        if(root == null)
+            return root;
+	    Node first=root;
+	    Node second=root.next;
+	    while(second != null){
+	        first=merge(first,second);
+	        second=second.next;
+	    }
+	    return first;
+	    
+    }
+    Node merge(Node h1,Node h2){
+        if(h1 == null)
+        return h2;
+        if(h2 == null)
+        return h1;
+        if(h1.data < h2.data){
+             h1.bottom=merge(h1.bottom,h2);
+            return h1;
+        }
+        else{
+            h2.bottom=merge(h1,h2.bottom);
+            return h2;
+            
+        }
+    }
+}
