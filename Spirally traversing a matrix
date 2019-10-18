@@ -1,0 +1,44 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int z=sc.nextInt();
+	 while(z-->0){
+	 int r=sc.nextInt();
+	 int c=sc.nextInt();
+	 int a[][]=new int[r][c];
+	 
+	 
+	 for(int i=0;i<r;i++){
+	     for(int j=0;j<c;j++){
+	         a[i][j]=sc.nextInt();
+	     }
+	 }
+	 
+	 int k=0,l=0,s=c,t=r;
+	 while(k<t && l <s){
+	     for(int i=l;i<s;i++)
+	        System.out.print(a[k][i]+" ");
+	     k++;  
+	     for(int i=k;i<t;i++)
+	        System.out.print(a[i][s-1]+" ");
+	        s--;
+	        if(k < t){
+	   for(int i=s-1;i>=l;i--)
+	    System.out.print(a[t-1][i]+" ");
+	        t--;}
+	        if(l< s){
+	   for(int i=t-1;i>=k;i--)
+	    System.out.print(a[i][l]+" ");
+	        l++;
+	 }
+	 }
+	 System.out.println();
+	 }
+}
+}
