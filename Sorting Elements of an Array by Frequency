@@ -1,0 +1,60 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Check{
+    int no;
+    int freq;
+    public Check(int no,int freq){
+        this.no=no;
+        this.freq=freq;
+    }
+    
+}
+ class Val implements Comparator<Check> 
+{ 
+    public int compare(Check ob1,Check ob2){
+        if(ob1.freq == ob2.freq){
+            return ob1.no - ob2.no;
+        }else{
+            return ob2.freq - ob1.freq;
+        }
+    } 
+} 
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n=sc.nextInt();
+	 int a[]=new int[n];
+	 for(int i=0;i<n;i++)
+	    a[i]=sc.nextInt();
+	    HashMap<Integer,Integer> map=new <Integer,Integer>HashMap();
+	    for(int i=0;i<n;i++){
+	        if(map.containsKey(a[i])){
+	            map.put(a[i],map.get(a[i])+1);
+	        }else{
+	            map.put(a[i],1);
+	        }
+	    }
+	    ArrayList<Check> list=new ArrayList<Check>();
+	    for(Map.Entry entry: map.entrySet()){
+	        Check check =new Check((int)entry.getKey(),(int)entry.getValue());
+	        list.add(check);
+	    }
+	    Collections.sort(list,new Val());
+	    for(int i=0;i<list.size();i++){
+	        Check obj=list.get(i);
+	      while(obj.freq-- >0){
+	            System.out.print(obj.no+" ");
+	        }
+	    }
+	        
+	   System.out.println();     
+	 }
+}
+}
