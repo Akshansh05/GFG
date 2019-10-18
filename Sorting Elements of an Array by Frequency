@@ -15,9 +15,9 @@ public class Check{
 { 
     public int compare(Check ob1,Check ob2){
         if(ob1.freq == ob2.freq){
-            return ob1.no - ob2.no;
+            return ob1.no - ob2.no;//ascending
         }else{
-            return ob2.freq - ob1.freq;
+            return ob2.freq - ob1.freq;//descending
         }
     } 
 } 
