@@ -1,0 +1,37 @@
+class Level
+{
+    static void connect(Node root)
+    {
+        levelorder(root);
+    }
+    static void levelorder(Node root){
+        Queue<Node> abc=new <Node> LinkedList();
+        abc.add(root);
+        while(!abc.isEmpty()){
+             Node prev=null;
+             int len=abc.size();
+        while(len-- > 0){//while the queue at current level is not empty 
+            
+            Node current=abc.remove();
+         
+            if(current.left != null){
+                abc.add(current.left);
+            }
+            if(current.right != null){
+                abc.add(current.right);
+            }
+            if(prev != null){//add existing nodes
+                prev.nextRight=current;
+            }
+            prev=current;//move previous pointer to current
+            
+        }
+        prev.nextRight=null;//last null at each level
+        
+        }
+       
+         
+    }
+    
+    
+}
