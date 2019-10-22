@@ -1,0 +1,57 @@
+class QueueBinding{
+    Node node;
+    int hd;
+    public QueueBinding(Node node,int hd){
+        this.node=node;
+        this.hd=hd;
+    }
+}
+class BinaryTree
+{
+    static void verticalOrder(Node root)
+    {
+        // add your code here
+        TreeMap <Integer,ArrayList<Integer>> map=new TreeMap <Integer,ArrayList<Integer>>();
+        Queue<QueueBinding>q=new LinkedList<QueueBinding>();
+        QueueBinding qb=new QueueBinding(root,0);
+        q.add(qb);
+        vertical(q,map);
+        StringBuffer sb=new StringBuffer("");
+        for(Map.Entry<Integer,ArrayList<Integer>> entry :map.entrySet()){
+            sb.append(entry.getValue());
+        }
+        String str=sb.toString();
+        str=str.replace("[","");
+        str=str.replace("]"," ");
+        str=str.replace(",","");
+        System.out.print(str);
+    }
+    static void vertical(Queue<QueueBinding>q,TreeMap <Integer,ArrayList<Integer>> map){
+            while(!q.isEmpty()){
+                QueueBinding qb=q.remove();
+                Node now=qb.node;
+                int hd=qb.hd;
+        ArrayList<Integer> list=map.get(hd);
+        if(list == null){
+            list=new ArrayList<Integer>();
+            list.add(now.data);
+        }else{
+            list.add(now.data);
+        }
+        map.put(hd,list);
+       
+        if(now.left !=null){
+            int hdL=hd-1;
+            Node temp=now.left;
+            QueueBinding w=new QueueBinding(temp,hdL) ;
+            q.add(w);
+        }
+        if(now.right != null){
+           int hdR=hd+1;
+            Node temp=now.right;
+             QueueBinding s=new QueueBinding(temp,hdR) ;
+            q.add(s);
+        }
+  }
+    }
+}
