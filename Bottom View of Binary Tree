@@ -1,0 +1,36 @@
+class Tree
+{
+    // Should print bottom view of tree with given root
+    public void bottomView(Node root)
+    {
+        // Your code here
+        int hd=0;
+        TreeMap<Integer,Stack<Integer>> map=new <Integer,Stack<Integer>>TreeMap();
+        bottom(root,map,hd);
+        ArrayList<Integer>List=new <Integer>ArrayList();
+       for(int dist :map.keySet()){
+           Stack<Integer>st=map.get(dist);
+           List.add(st.pop());
+       }
+       for(int i=0;i<List.size();i++){
+           System.out.print(List.get(i)+" ");
+       }
+    }
+    public void bottom(Node root,TreeMap<Integer,Stack<Integer>>map,int hd){
+        if(root == null)
+            return;
+               if(map.containsKey(hd)){
+                    Stack<Integer> s=map.get(hd);
+                    map.remove(hd);
+                    s.push(root.data);
+                    map.put(hd,s);
+                }else{
+                    Stack<Integer> st=new Stack<Integer>();
+                    st.push(root.data);
+                    map.put(hd,st);
+                }
+                bottom(root.left,map,hd-1);
+                bottom(root.right,map,hd+1);
+    }
+}
+	
