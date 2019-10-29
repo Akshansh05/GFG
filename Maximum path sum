@@ -1,0 +1,23 @@
+class GfG
+{
+     static int value=Integer.MIN_VALUE;
+    public static int maxPathSum(Node root)
+    {
+        // your code here
+        value=Integer.MIN_VALUE;
+        path(root);
+        int r=value;
+        return r;
+    }
+    public static int path(Node root){
+        if(root == null)
+            return Integer.MIN_VALUE;
+        if(root.left == null && root.right == null)
+             return root.data;
+        int left =path(root.left);
+        int right=path(root.right);
+        if(root.left != null && root.right != null)
+            value=Math.max(value,(left+right+root.data));
+            return Math.max(left,right)+root.data;
+    }
+}
