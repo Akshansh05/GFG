@@ -1,0 +1,50 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	    int n1=sc.nextInt();
+	    int n2=sc.nextInt();
+	    int n3=sc.nextInt();
+	  HashSet<Integer> set1=new<Integer>HashSet();
+	  while(n1-->0)
+	  {
+	      set1.add(sc.nextInt());
+	  }
+	   HashSet<Integer> set2=new<Integer>HashSet();
+	  while(n2-->0)
+	  {
+	      set2.add(sc.nextInt());
+	  }
+	   HashSet<Integer> set3=new<Integer>HashSet();
+	  while(n3-->0)
+	  {
+	      set3.add(sc.nextInt());
+	  }
+	 Set<Integer> intersection = new HashSet<Integer>(set1);
+	 intersection.retainAll(set2);
+	 Set<Integer> intersection2 = new HashSet<Integer>(intersection);
+	 intersection2.retainAll(set3);
+	    if(intersection2.isEmpty()){
+	        System.out.print("-1");
+	    }else{
+	    
+	    ArrayList<Integer> list=new ArrayList<Integer>();
+	  for(int ele:intersection2){
+	      list.add(ele);
+	  }
+	  Collections.sort(list);
+	      for(int ele2:list){
+	      System.out.print(ele2+" ");
+	  }   
+	    }
+	    System.out.println();    
+	 }
+}
+}
