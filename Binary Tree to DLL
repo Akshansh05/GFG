@@ -13,10 +13,11 @@ public void	makeDLL(Node root){
             return ;
               makeDLL(root.left);
               
-        Node newNode=new Node(root.data);
+        
             if(head==null){
                head=root;
             }else{
+                Node newNode=new Node(root.data);
                 Node head1=head;
                 while(head1.right !=null){
                     head1=head1.right;
