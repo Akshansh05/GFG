@@ -1,0 +1,31 @@
+class GfG
+{
+   Node head;
+    Node bToDLL(Node root)
+       { 
+        makeDLL(root);
+      return head;
+        }
+	
+public void	makeDLL(Node root){
+        
+	    if(root==null)
+            return ;
+              makeDLL(root.left);
+              
+        Node newNode=new Node(root.data);
+            if(head==null){
+               head=root;
+            }else{
+                Node head1=head;
+                while(head1.right !=null){
+                    head1=head1.right;
+                }
+                head1.right=newNode;
+                newNode.left=head1;
+                newNode.right=null;
+            }
+           
+              makeDLL(root.right);
+	}
+    }
