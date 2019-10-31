@@ -1,0 +1,23 @@
+class Tree
+{
+   /* Complete the function to get diameter of a binary tree */
+    int diameter(Node node)
+    {   if(node == null)
+        return 0;
+        int leftHeight=getHeight(node.left);
+        int rightHeight=getHeight(node.right);
+        int totalDistance=leftHeight+rightHeight+1;
+        
+        int lstDist=diameter(node.left);
+        int rstDist=diameter(node.right);
+        int maxSt=Math.max(lstDist,rstDist);
+        int maxVal=Math.max(totalDistance,maxSt);
+        return maxVal;
+        
+    }
+    int getHeight(Node node){
+        if(node==null)
+         return 0;
+         return 1+Math.max(getHeight(node.left),getHeight(node.right));
+    }
+}
