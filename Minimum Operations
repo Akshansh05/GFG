@@ -1,0 +1,41 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	        int n=sc.nextInt();
+	       int len=findLen(n);
+	      int sb =findset(n);
+	       System.out.println(len-1+sb);
+	 }
+}
+
+static int findLen(int n){
+    int val=1;
+    if(n==0)
+        return val;
+    while(n>1){
+        n=n>>1;
+        val++;
+    }  
+    return val;
+}
+static int findset(int n){
+    int count=0;
+    if(n==0)
+    return 0;
+    while(n>0){
+        if((n&1) !=0){
+            count++;
+        }
+        n=n>>1;
+    }
+    return count;
+}
+}
