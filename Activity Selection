@@ -52,7 +52,7 @@ static class Pair{
 }
 static class c implements Comparator<Pair>{
     public int compare(Pair a,Pair b){
-        return a.end-b.end;
+        return a.end-b.end;//ascending
     }
 }
 }
