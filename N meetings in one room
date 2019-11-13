@@ -1,0 +1,70 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n=sc.nextInt();
+	 int start[]=new int[n];
+	 int end[]=new int[n];
+	 for(int i=0;i<n;i++){
+	     start[i]=sc.nextInt();
+	 }
+	 for(int i=0;i<n;i++){
+	     end[i]=sc.nextInt();
+	 }
+	 ArrayList<Pair> list =new ArrayList<Pair>();
+	 for(int i=0;i<n;i++){
+	    Pair pair =new Pair(start[i],end[i]);
+	    list.add(pair);
+	 }
+	 Collections.sort(list,new c());
+	 
+	
+	 int prev =-1;
+	 for(Pair p:list){
+	     if(prev != -1){
+	         if(p.start >= prev){
+	             prev=p.end;
+	             int y=printIndex(p.start,start);
+	             System.out.print(y+" ");
+	         }
+	     }else{
+	        prev=p.end; 
+	        int a=printIndex(p.start,start);
+	        System.out.print(a+" ");
+	     }
+	 }
+	 System.out.println();
+	 }
+}
+static int printIndex(int num,int a[]){
+    int z=-1;
+    for(int i=0;i<a.length;i++){
+        if(num == a[i]){
+          z=i+1;
+            break;
+        }
+    }
+    return z;
+}
+
+static class Pair{
+    int start;
+    int end;
+    public Pair(int x,int y){
+        this.start=x;
+        this.end=y;
+    }
+}
+static class c implements Comparator<Pair>{
+    public int compare(Pair a,Pair b){
+        return a.end-b.end;//ascending
+    }
+}
+}
