@@ -14,7 +14,6 @@ class GFG
 	 int s=sc.nextInt();
 	 int a[] = new int[d];
 	 
-	 int c=0;
 	 
 	    if(s <= 0)
 	        System.out.println("-1");
@@ -28,23 +27,18 @@ class GFG
 	           if(s > 9){
 	               a[i]=9;
 	               s-=9;
-	               c++;
 	           }
 	           else{
 	               a[i]=s;
 	               s-=s;
-	               c++;
 	           }
 	       }
-	       if( c==d ){
+	      
 	           for(int i=0;i<d;i++){
 	               System.out.print(a[i]);
 	           }
 	           System.out.println();
 	           
-	       } else{
-	           System.out.println("-1");
-	       }
 	   }     
 	 
 	 }
