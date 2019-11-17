@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code 
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int n= sc.nextInt();
+	 int a[] = new int[n];
+	 for(int i=0;i<n;i++)
+	    a[i]=sc.nextInt();
+	    int capacity = sc.nextInt();
+	   ArrayList<Integer> buffer = new <Integer>ArrayList();//Use ArrayList easiest solution
+
+	    int pf=0;
+
+	    for(int i=0;i<n;i++){
+	        int val=a[i];
+	        if((buffer.size() < capacity) && !buffer.contains(val)){
+	            buffer.add(val);
+	            pf++;
+	        }
+	        else if(buffer.size() >= capacity && !buffer.contains(val)){
+	            buffer.remove(0);
+	            buffer.add(val);
+	            pf++;
+	        }else if((buffer.size() < capacity) && buffer.contains(val)){
+	            int index=buffer.indexOf(val);
+	            buffer.remove(index);
+	            buffer.add(val);
+	        }else{
+	            int index=buffer.indexOf(val);
+	            buffer.remove(index);
+	            buffer.add(val);
+	        }
+	    }
+	    System.out.println(pf);
+	 }
+}
+
+}
