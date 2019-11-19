@@ -21,12 +21,11 @@ class GFG
 	    Arrays.sort(a);
 	    Arrays.sort(b);
 	    
-	    long sum1=0,sum2=0;
+	    long sum1=0;
 	    for(int i=0;i<n;i++){
 	        sum1+=(a[i]*b[n-i-1]);
-	        sum2+=(a[n-i-1] * b[i]);
 	    }
-	    System.out.println(Math.min(sum1,sum2));
+	    System.out.println(sum1);
 	  
 	 }
 }
