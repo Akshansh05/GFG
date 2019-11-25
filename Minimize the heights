@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int k=sc.nextInt();
+	 int n=sc.nextInt();
+	 int a[]=new int[n];
+	 
+	 for(int i=0;i<n;i++)
+	    a[i]=sc.nextInt();
+	    
+	  Arrays.sort(a);
+	  int largest=a[n-1];
+	  int smallest=a[0];
+	  if((largest-smallest) < k)
+	    System.out.println(largest-smallest);
+	    else{
+	        int avg=(largest+smallest)/2;
+	         for(int i=0;i<n;i++){
+	             if(a[i] <= avg){
+	                 a[i]=a[i]+k;
+	             }else{
+	                 a[i]=a[i]-k;
+	             }
+	         }
+	         Arrays.sort(a);
+	        System.out.println(a[n-1]-a[0]);
+	    }
+	 }
+}
+}
