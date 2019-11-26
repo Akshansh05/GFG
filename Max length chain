@@ -1,0 +1,25 @@
+class GfG
+{
+    int maxChainLength(Pair arr[], int n)
+    {
+       Arrays.sort(arr,new c());
+       int count=1,i=1;
+       Pair curr=arr[0];
+    while(i<arr.length){
+        if((curr.y < arr[i].x)){
+       count++;
+       curr=arr[i];
+            i++;
+        }
+       else{
+           i++;
+       }
+    }
+    return count;
+    }
+}
+class c implements Comparator<Pair>{
+    public int compare(Pair a,Pair b){
+        return a.y-b.y;
+    }
+}
