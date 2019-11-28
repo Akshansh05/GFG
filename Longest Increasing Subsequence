@@ -21,11 +21,11 @@ class GFG
 	 
 	 int ans=1;
 	 for(int i=0;i<n;i++)
-	    dp[i] =1;
+	    dp[i] =1;//stores count
 	 for(int i=0;i<n;i++){
 	     for(int j=0;j<i;j++){
 	         
-	         if(a[j]<a[i] && (dp[j]+1)> dp[i]){
+	         if(a[j]<a[i] && (dp[j]+1)> dp[i]){//check for less and count state check 
 	             dp[i]=dp[j]+1;
 	             ans=Math.max(ans,dp[i]);
 	         }
