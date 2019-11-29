@@ -29,7 +29,8 @@ class GFG
 	
 	 for(int i=0;i<n;i++){
 	     for(int j=w;j>=wt[i];j--){//total capacity se given profit index ke weight pe jaa rha h 
-	       dp[j]=Math.max(dp[j],a[i]+dp[j-wt[i]]); //us profit ko include krke update kr de rha dp[j] pe  
+	       dp[j]=Math.max(dp[j],a[i]+dp[j-wt[i]]); //us profit ko include krke update kr de rha dp[j] pe
+	       				 //remaining capacity of sack after using that weight uspe dp[left capacity] gives the profit at that capacity 
 	     }
 	 }
 	 System.out.println(dp[w]);
