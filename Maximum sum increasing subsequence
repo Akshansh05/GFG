@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 
+	 int n=sc.nextInt();
+	 
+	 int a[] = new int[n];
+	 int dp[]=new int[n];//stores the sum state
+	 for(int i=0;i<n;i++){
+	    a[i]=sc.nextInt();
+	    dp[i]=a[i];
+	 }
+	    
+	 int ans=dp[0];
+	 for(int i=1;i<n;i++){
+	     for(int j=0;j<i;j++){
+	         if((a[j]<a[i])){//if increasing
+	             dp[i]=Math.max(dp[i],dp[j]+a[i]);//stores the max of current sum state and coming state 
+	            if(dp[i]>ans){
+	                ans=dp[i];//gives max of the net state
+	            }
+	         }
+	     }
+	 }
+	 System.out.println(ans);
+	 }
+}
+}
