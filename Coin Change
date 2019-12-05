@@ -1,0 +1,35 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 
+	 int types=sc.nextInt();
+	 int a[] = new int[types];
+	 for(int i=0;i<types;i++)
+	    a[i] = sc.nextInt();
+	    
+	 int worth =sc.nextInt();
+	 
+	 int dp[][] =new int [types+1][worth+1];
+	 
+	 for(int i=0;i<=types;i++){
+	     for(int j=0;j<=worth;j++){
+	         if(i==0 && j==0)dp[i][j] =1;//initialize
+	         else if(i==0)dp[i][j]=0;//initialize
+	         else if(j==0)dp[i][j]=1;//initialize
+	         else if(j>=a[i-1])dp[i][j]=dp[i-1][j]+dp[i][j-a[i-1]];//agar current weight bada hai current types se then store pichla type ka current weight +current type ka left weight
+	         else
+	         dp[i][j]=dp[i-1][j];//agar current weight chota hai current type se then store pichla type current weight
+	     }
+	 }
+	 System.out.println(dp[types][worth]);
+	 }
+}
+}
