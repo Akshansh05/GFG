@@ -1,0 +1,23 @@
+class Traversal
+{
+    static void bfs(int src, ArrayList<ArrayList<Integer>> list, boolean vis[], int nov)
+    {
+       // add your code here
+  Queue<Integer> q = new <Integer>LinkedList();
+       if(q.isEmpty()){
+           q.add(src);
+           vis[src]=true;
+       }
+       while(!q.isEmpty()){
+           int curr=q.remove();
+       System.out.print(curr+" ");
+       for(int i=0;i<list.get(curr).size();i++){
+           if(vis[list.get(curr).get(i)]==false){
+                vis[list.get(curr).get(i)]=true;
+            q.add(list.get(curr).get(i));
+            
+         }
+       }
+    }
+    }
+}
