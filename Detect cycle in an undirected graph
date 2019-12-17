@@ -1,0 +1,35 @@
+class DetectCycle
+{
+    static boolean isCyclic(ArrayList<ArrayList<Integer>> list, int V)
+    {
+       // add your code here
+       boolean vis[] = new boolean[V];
+       for(int i=0;i<V;i++)
+            vis[i] =false;
+            
+            for(int i=0;i<V;i++){
+                if(!vis[i])
+                    if(checkCyclic(i,vis,-1,list))
+                        return true;
+            }
+            return false;
+    }
+    
+    static boolean checkCyclic(int curr ,boolean vis[],int parent,ArrayList<ArrayList<Integer>> list){
+        vis[curr]=true;
+        
+        
+        for(int i=0;i<list.get(curr).size();i++){
+            
+            if(!vis[list.get(curr).get(i)]){
+                if(checkCyclic(list.get(curr).get(i),vis,curr,list))
+                    return true;
+                
+            }
+            else if(list.get(curr).get(i) !=parent)//do dfs and check if any visiting node of current node(parent) matches with current node(Parent) if yes then there is a cycle else no cycle
+                return true;
+        
+        }
+        return false;
+    }
+}
