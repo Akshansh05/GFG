@@ -1,0 +1,36 @@
+class TopologicalSort
+{
+   
+    
+    static int[] topoSort(ArrayList<ArrayList<Integer>> list, int N)
+    {   ArrayList<Integer> l =new ArrayList<Integer>();
+         boolean vis[]=new boolean[N];
+       // add your code here
+       for(int i=0;i<N;i++)
+            vis[i]=false;
+       
+       for(int i=0;i<N;i++){
+           if(!vis[i])
+            dfs(i,list,vis,l);
+       }
+       Collections.sort(l,Collections.reverseOrder());
+       int val[] =new int[N];
+        for(int j=0;j<N;j++){
+            val[j] = l.get(j);
+        }
+        return val;
+    }
+   static void dfs(int index,ArrayList<ArrayList<Integer>> list,boolean vis[],ArrayList<Integer>l)  {
+       
+       vis[index]= true;
+       
+       for(int i=0;i<list.get(index).size();i++){
+           
+           if(!vis[list.get(index).get(i)])
+                dfs(list.get(index).get(i),list,vis,l);
+       }
+  
+       l.add(index);
+ }
+    
+}
