@@ -1,0 +1,46 @@
+class Islands
+{
+    
+    // Function to find the number of island in the given list
+    // N, M: size of list row and column respectively
+    static int findIslands(ArrayList<ArrayList<Integer>> list, int N, int M)
+    {
+        boolean vis[][] =new boolean[N][M];
+        
+        for(int i=0;i<N;i++){
+            for(int j=0;j<M;j++){
+                vis[i][j]=false;
+            }
+        }
+      
+      int count=0;
+        for(int k=0;k<N;k++){
+            for(int l=0;l<M;l++){
+                if(!vis[k][l] && list.get(k).get(l) ==1){
+                    dfs(list,vis,k,l,N,M);
+                    count++;
+                }
+        
+            }
+        }
+        return count;
+    }
+    
+   static boolean isSafe(ArrayList<ArrayList<Integer>> list,int r,int c,boolean vis[][],int N,int M){
+        
+        return (r>=0) && (c>=0) && (r<N) && (c<M)  && (vis[r][c]==false && list.get(r).get(c)==1);
+    }
+    static void dfs(ArrayList<ArrayList<Integer>> list,boolean vis[][],int r,int c,int N,int M){
+        
+        vis[r][c]=true;
+        int rT[]=new int[]{-1,-1,-1,0,0,1,1,1};
+        int cT[]=new int[]{-1,0,1,-1,1,-1,0,1};
+        
+        for(int i=0;i<8;i++){
+            if(isSafe(list,r+rT[i],c+cT[i],vis,N,M)){
+                dfs(list,vis,r+rT[i],c+cT[i],N,M);
+            }
+        }
+    }
+    
+}
