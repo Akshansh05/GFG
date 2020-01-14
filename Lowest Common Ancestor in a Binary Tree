@@ -1,0 +1,14 @@
+	Node lca(Node root, int n1,int n2)
+	{
+		// Your code here
+		if(root ==null)
+        return null;
+       Node left=  lca(root.left,n1,n2);
+        Node right=lca(root.right,n1,n2);
+        if(root.data == n1 || root.data == n2)//if matches
+            return root;
+        if(left !=null && right !=null){//root is ancestor of booth left and right
+            return root;
+        }
+        return left!=null ? left:right;//if any one is null then this condition
+	}
