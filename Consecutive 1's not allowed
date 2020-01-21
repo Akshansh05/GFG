@@ -1,0 +1,27 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 
+	 
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	     int dp[]=new int[100005];
+	 int num=sc.nextInt();
+	  dp[1]=2;
+	  dp[2]=3;
+	  
+	  for(int i=3;i<105;i++)
+	  dp[i]=(dp[i-1]+dp[i-2])%1000000007;
+	  
+	  System.out.println(dp[num]);
+	 
+	 
+	 }
+}
+}
