@@ -1,0 +1,21 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	  int num =sc.nextInt();
+	  int count=0;
+	  
+	  for(int i=5;num/i>=1;i=i*5){
+	      count+=num/i;
+	  }
+	  System.out.println(count);
+	 }
+}
+}
