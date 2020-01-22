@@ -1,0 +1,30 @@
+class GfG
+{
+   // Merges two subarrays of arr[].  First subarray is arr[l..m]
+   // Second subarray is arr[m+1..r]
+    void merge(int arr[], int l, int m, int r)
+    {
+         // Your code here
+         int k[] = new int[r-l+1];
+         int i=l;
+         int j=m+1;
+         int s=0;
+         while(i<=m && j<=r){
+             if(arr[i]<=arr[j]){
+                 k[s++]=arr[i];
+                 i++;
+             }else{
+                 k[s++]=arr[j];
+                 j++;
+             }
+         }
+         while(i<=m)
+         k[s++]=arr[i++];
+         while(j<=r)
+         k[s++]=arr[j++];
+         
+         for(int q=0, w=l;w<=r;q++,w++){
+             arr[w]=k[q];
+         }
+    }
+}
