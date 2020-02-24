@@ -1,0 +1,7 @@
+1.Find the states like dp[m][n]
+
+2.Define the dp States what dp[m][n] is doing
+
+3.Find the relation b/w the states and base cases relate dp[m][n] with previous or next state and define dp[I][0],dp[0][j] ,dp[0][0]
+
+4.Validating the states  find if its true or not
