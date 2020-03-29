@@ -1,0 +1,92 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+    
+    Scanner sc = new Scanner(System.in);
+    
+    int t = sc.nextInt();
+    
+    while(t-->0){
+        
+        int n= sc.nextInt();
+        
+        int a[] = new int[n];
+        int countP=0,countN=0,countZ=0;
+      
+        for(int i=0;i<n;i++){
+            a[i] = sc.nextInt();
+            if(a[i]<0){
+                countN++;
+            }
+            if(a[i]>0){
+                countP++;
+
+            }else{
+                countZ++;
+            }
+        }
+       Arrays.sort(a);
+       
+   System.out.println(findMax(a,n,countP,countN,countZ) + " "+findMin(a,n,countP,countN,countZ));
+    
+	}
+	
+}
+static int findMax(int a[],int n,int countP,int countN,int countZ){
+    
+         int max=1;
+         
+        if((countN%2) ==0){
+        for(int i=0;i<countN;i++){
+            max=max*a[i];
+        }
+       }else{
+           for(int i=0;i<countN-1;i++){
+               max=max*a[i];
+           }
+       }
+       
+        for(int i=n-1;i>(n-countP-1);i--){
+            max=max*a[i];
+        }
+        if(countP ==0 && countN ==0 && countZ !=0){
+            max =0;
+        }
+        return max;
+}
+
+static int findMin(int a[],int n,int countP,int countN,int countZ){
+    
+    int min =1;
+    
+    if((countN%2) ==0){
+          for(int i=0;i<countN-1;i++){
+               min=min*a[i];
+           }
+              for(int i=n-1;i>(n-countP-1);i--){
+            min=min*a[i];
+        }
+        
+    }else{
+    
+        for(int i=0;i<countN;i++){
+            min=min*a[i];
+        }
+           for(int i=n-1;i>(n-countP-1);i--){
+            min=min*a[i];
+        }
+    }
+      if(countN ==0 && countZ !=0){
+            min =0;
+        }
+        if(countN ==0 && countZ ==0){
+            min=a[0];
+        }
+    return min;
+    
+}
+}
