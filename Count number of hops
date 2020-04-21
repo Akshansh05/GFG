@@ -1,0 +1,27 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	     int s =sc.nextInt();
+	     
+	     int dp[]=new int[s+1];
+
+	     dp[0]=1;
+	     if(s>=1)
+	        dp[1]=1;
+	        if(s>=2)
+	        dp[2]=2;
+	     for(int i=3;i<=s;i++){
+	        dp[i]=dp[i-1]+dp[i-2]+dp[i-3];
+	 }
+	 System.out.println(dp[s]);
+}
+}
+}
