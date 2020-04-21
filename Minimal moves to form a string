@@ -1,0 +1,32 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 String s =sc.next();
+	 int l = s.length()-1;
+	 int count=0;
+	 while(l>=0){
+	     if(l%2 != 0){
+	         if((s.substring(0,l/2+1)).equals(s.substring(l/2+1,l+1))){
+	             l=l/2;
+	         }
+	         else{
+	             l--;
+	         }
+	     }
+	     else{
+	      l--;   
+	     }
+	     count++;
+	 }
+	 System.out.println(count);
+	 }
+}
+}
