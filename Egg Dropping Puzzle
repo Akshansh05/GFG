@@ -1,0 +1,42 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 
+	 int eggs = sc.nextInt();
+	 int floors = sc.nextInt();
+	 
+	 int dp[][] = new int[eggs+1][floors+1];
+	 
+	 for(int i=0;i<=eggs;i++){
+	     dp[i][0]=0;//0th floor we need 0 trial
+	     dp[i][1]=1;//1 floor we need 1 trial
+	 }
+	 for(int j=0;j<=floors;j++){
+	    dp[1][j]=j;//one egg we need trial no equal to floors
+	    dp[0][j]=0;// with no eggs we cannot have any trial
+	 }
+	 
+	 for(int i=2;i<=eggs;i++){
+	     for(int j=2;j<=floors;j++){
+	         dp[i][j]=Integer.MAX_VALUE;//to get the min we have to initialize max
+	         for(int k=1;k<=j;k++){//checking the floor below the jth floor to find the state of jth floor from below floors
+	           int res = 1+Math.max(dp[i-1][k-1],dp[i][j-k]);//1+ is done because we are using this trial and 1st max param is for case when eggs break and below floor status is obtained 2nd case is when eggs does not break and floor above status is obtained  
+	            if (res < dp[i][j]){
+	                dp[i][j] = res;
+	            }
+	         }
+	         
+	     }
+	 }
+	 System.out.println(dp[eggs][floors]);
+}
+}
+}
