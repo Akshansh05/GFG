@@ -1,0 +1,82 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 int r =sc.nextInt();
+	 int c= sc.nextInt();
+	 
+	 int countFresh = 0;
+	 
+	 int grid[][] = new int[r][c];
+	 
+	 Queue<Key> queue = new LinkedList<Key>();
+	 
+	 for(int i=0;i<r;i++){
+	     for(int j=0;j<c;j++){
+	         grid[i][j] = sc.nextInt();
+	         
+	         if(grid[i][j] == 2){
+	             Key key = new Key(i,j);
+	             queue.add(key);
+	         }
+	         if(grid[i][j] == 1)
+	            countFresh++;
+	     }
+	 }
+	
+	 if (countFresh == 0){
+	     System.out.println("-1");
+	     return;
+	 }
+	 int X [] = {-1,0,1,0};
+	 int Y [] = {0,1,0,-1};
+	 
+	 int count=0;
+	
+	     while(!queue.isEmpty()){
+                int size = queue.size();
+            for(int i=0;i<size;i++){
+	            Key curr = queue.remove();
+	            
+	    for(int k=0;k<4;k++){
+	         int currRow = curr.i + X[k];
+	         int currCol = curr.j + Y[k];
+	         
+	         if(isSafe(currRow,currCol,grid,r,c)){
+	             grid[currRow][currCol] = 2;
+	             countFresh--;
+	              Key currKey = new Key(currRow,currCol);
+	             queue.add(currKey);
+	         }
+	        }
+        }
+	     count++;
+	   }
+	   if(countFresh == 0){
+	       System.out.println(count-1);
+	   }
+	   else{
+	       System.out.println("-1");
+	   }
+	 }
+}
+public static boolean isSafe(int i,int j,int grid[][],int r, int c){
+    if(i<r && j<c && i>=0 && j>=0 && grid[i][j]!=0 && grid[i][j]!= 2)
+        return true;
+    return false;    
+}
+}
+class Key{
+    int i,j;
+    public Key(int i,int j){
+        this.i = i;
+        this.j = j;
+    }
+}
