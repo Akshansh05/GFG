@@ -1,0 +1,101 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 ArrayList<ArrayList<Integer>> list = designBoard();
+	  
+	  int ini,fin;
+	  
+	  int n=sc.nextInt();
+	  
+	  for(int i=0;i<n;i++){
+	      ini =sc.nextInt();
+	      fin =sc.nextInt();
+	      list.get(ini).add(fin);
+	      if(fin >ini){
+	          for(int k=ini;k>=0 && k>=(ini-6);k--)
+	            list.get(k).add(fin);//if any ladder is near 1-6 we can directly go to destination 
+	      }
+	  }
+	  
+	  System.out.println(getCount(list));
+	  
+	 }
+	 }
+	  public static int getCount( ArrayList<ArrayList<Integer>> list){
+	      int count =0;
+      Queue<Integer> q = new <Integer>LinkedList();
+      q.add(1);//1st node
+      boolean vis [] =new boolean[31];
+      
+      for(int i=0;i<31;i++)
+         vis[i] = false;
+      while(!q.isEmpty()){
+          int size = q.size();//maintains the moves 
+          for(int j=0;j<size;j++){
+          int l = q.remove();
+          
+          for(int i=0;i<list.get(l).size();i++){
+              if(vis[list.get(l).get(i)] == false){
+                  vis[list.get(l).get(i)] =true;
+                  q.add(list.get(l).get(i));
+              }
+          }
+      }
+       count++;
+      if(q.contains(30))
+        return count;
+      }
+      return count;
+ }	
+	 
+	 public static ArrayList<ArrayList<Integer>> designBoard(){
+	     ArrayList<ArrayList<Integer>> list =new  ArrayList<ArrayList<Integer>>();
+	     for (int i=0;i<31;i++)
+	        list.add(i,new ArrayList<Integer>());//init arraylist
+	     
+	     for(int i=1;i<31;i++){
+	         int p;
+	         switch(i){
+	             case 30:{
+	                 p=0;
+	                 break;}
+	             case 29:{
+	                   p=1;
+	                   break;}
+	             case 28:{
+	                 p=2;
+	                 break;
+	             }
+	             case 27:{
+	                p=3;
+	                break;
+	             }
+	             case 26:{
+	                 p=4;
+	                 break;
+	             }
+	             case 25:{
+	                 p=5;
+	                 break;
+	             }
+	             default:{
+	             p=6;
+	             break;
+	            }
+	             }
+	            for(int j=1;j<=p;j++){
+	                list.get(i).add(i+j);//current se 6 more edges 
+	            } 
+	                
+	         }
+	         return list;
+	     }
+}
