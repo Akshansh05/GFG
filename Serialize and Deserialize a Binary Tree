@@ -1,0 +1,38 @@
+class Tree {
+	public void serialize(Node root, ArrayList<Integer> A) {
+	   
+	   if(root == null){
+	       A.add(-1);// if nuall add -1
+	        return;
+	   }
+	   
+        A.add(root.data);//post order insertion in A
+        
+        serialize(root.left,A);
+        serialize(root.right,A);
+	}
+	
+    public Node deSerialize(ArrayList<Integer> A){
+         if(A.size() == 0)
+           return null;
+    return DeSerializeHelper(A);
+    }
+    
+    int i=0;
+    public Node DeSerializeHelper(ArrayList<Integer>A){
+      
+        if(A.get(i) == -1){
+            i++;
+            return null;
+        }
+       
+        Node node = new Node(A.get(i++));
+        node.left = DeSerializeHelper(A);//post order trversal
+        node.right = DeSerializeHelper(A);
+        return node;
+       
+        
+    }
+    
+
+}
