@@ -1,0 +1,19 @@
+static int findDistance(Node root, int x)  
+{ 
+
+return  findDistanceHelper(root,x,0);
+  
+}
+static int index =-1;
+static int findDistanceHelper(Node root,int x,int i){
+    if(root == null)
+        return -1;
+    if(root.data == x){
+        index =i;
+        return index;
+    }
+    i++;
+    findDistanceHelper(root.left,x,i);
+    findDistanceHelper(root.right,x,i);
+    return index;
+}
