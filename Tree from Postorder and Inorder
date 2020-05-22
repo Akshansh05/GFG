@@ -1,0 +1,27 @@
+class GfG {
+    // Complete the function
+       static int endIndex;
+    Node buildTree(int in[], int post[], int n) {
+        // Your code here
+        endIndex = n-1;
+       return buildTreeHelper(in,post,0,n-1);
+    }
+
+    static Node buildTreeHelper(int in[],int post[],int init,int fin){
+       if(init >fin){
+           return null;
+       }
+       int root = post[endIndex--];
+              Node node =new Node(root);
+             
+              int rootIndex;
+        for(rootIndex=init;rootIndex<=fin;rootIndex++){
+           if(in[rootIndex] ==root){
+               break;
+           }
+        } 
+        node.right=buildTreeHelper(in,post,rootIndex+1,fin);
+        node.left = buildTreeHelper(in,post,init,rootIndex-1);
+         return node;
+    }
+}
