@@ -1,0 +1,32 @@
+class GfG
+{
+    public static int preIndex;
+    GfG(int ind)
+    {
+        preIndex = ind;
+    }
+    
+  public static Node buildTree(int ino[], int pre[], int st, int end)
+    {
+       // add your code here
+       return buildTreeHelper(ino,pre,0,ino.length-1);
+    }
+    
+     static Node buildTreeHelper(int in[],int pre[],int init,int fin){
+       if(init >fin){
+           return null;
+       }
+       int root = pre[preIndex++];
+              Node node =new Node(root);
+             
+              int rootIndex;
+        for(rootIndex=init;rootIndex<=fin;rootIndex++){
+           if(in[rootIndex] ==root){
+               break;
+           }
+        } 
+        node.left = buildTreeHelper(in,pre,init,rootIndex-1);//prored first travels left
+        node.right=buildTreeHelper(in,pre,rootIndex+1,fin);
+         return node;
+    }
+}
