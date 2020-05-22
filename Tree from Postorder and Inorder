@@ -20,7 +20,7 @@ class GfG {
                break;
            }
         } 
-        node.right=buildTreeHelper(in,post,rootIndex+1,fin);
+        node.right=buildTreeHelper(in,post,rootIndex+1,fin);//postorder has 1st right then left 
         node.left = buildTreeHelper(in,post,init,rootIndex-1);
          return node;
     }
