@@ -1,0 +1,56 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {      static long sum; 
+	public static void main (String[] args)
+	 {
+	 //code
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	 
+	 int n =sc.nextInt();
+	 
+	 long a[] = new long[n];
+	 
+	 for(int i=0;i<n;i++)
+	    a[i] = sc.nextLong();
+	      sum=0;//every case initialise to 0
+	    sort(a,0,a.length-1);
+	   System.out.println(sum);
+	 }
+}
+public static void  sort(long a[],int l,int h){
+    if(l<h){
+        int m = (l+h)/2;
+        sort(a,l,m);
+        sort(a,m+1,h);
+         merge(a,l,m,h);
+    }
+}
+public static long merge(long a[],int l,int m,int h){
+
+ long temp[] = new long[h-l+1];
+           int i=l,j=m+1;
+          int k=0;
+    while(i<=m && j<=h){
+         if(a[i]<=a[j]){
+           temp[k++] = a[i++];
+         }else{
+            sum+=(m-i)+1;//all the array elements in the 1st array is less take all
+            temp[k++]= a[j++];
+         }
+    }
+    while(i<=m){
+        temp[k++] = a[i++];
+    }
+    while(j<=h){
+        temp[k++] = a[j++];
+    }
+    for(int q=l,w=0;q<=h;q++,w++)
+        a[q]=temp[w];//store the sorted array
+        
+    return sum;
+}
+}
