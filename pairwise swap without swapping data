@@ -1,0 +1,12 @@
+public class Solution {
+    public ListNode swapPairs(ListNode A) {
+    if (A ==null || A.next ==null)
+        return A;
+    
+     ListNode temp =A.next;
+     A.next = temp.next;//next Link
+     temp.next =A;// reverse link 
+     A.next = swapPairs(A.next);//inking between 2 swaps 
+     return temp;//return reversed head
+    }
+}
