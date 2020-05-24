@@ -45,3 +45,26 @@ class GfG
             return false;
     }
 }
+
+/*
+recursive approach
+public class Solution {
+    public int isSymmetric(TreeNode A) {
+        if (isSymmetrichelper(A,A))
+            return 1;
+        return 0;
+    }
+    public boolean isSymmetrichelper(TreeNode A,TreeNode B){
+       if(A ==null && B==null)
+            return true;
+        if(A==null || B== null)
+            return false;
+        if(A.val !=B.val)
+            return false;
+        if(isSymmetrichelper(A.left,B.right) && isSymmetrichelper(A.right,B.left))
+            return true;
+        return false;    
+    }
+    
+}
+*/
