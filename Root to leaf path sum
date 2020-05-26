@@ -1,0 +1,29 @@
+class Tree {
+    /*you are required to complete this function */
+    ArrayList<Integer> list;
+    int sum;
+     boolean  flag;
+    boolean hasPathSum(Node node, int B) {
+        // Your code here
+       list =new ArrayList<Integer>();
+       sum=0;
+       flag= false;
+        helper(node,B);
+        return flag;
+    }
+    public void helper(Node A,int B){
+      if(A == null)
+            return;
+    sum += A.data;
+     list.add(A.data);
+    helper(A.left,B);
+    helper(A.right,B);
+    
+    if(A.left == null && A.right == null && sum ==B){
+        flag=true;
+  
+    }
+    list.remove(list.size()-1);
+    sum-=A.data;
+}
+}
