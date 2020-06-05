@@ -1,0 +1,93 @@
+public class Solution {
+    TrieNode root;
+    void initRoot(){
+        root = new TrieNode();
+    }
+    void insert(String s){
+        TrieNode temp =root;
+        for(int i =0;i<s.length();i++){
+            if(temp.children[s.charAt(i)-'a']==null && !search(s)){
+                temp.children[s.charAt(i)-'a'] = new TrieNode();
+            }
+                temp = temp.children[s.charAt(i)-'a'];
+            
+        }
+        temp.isEndOfWord =true;
+    }
+    boolean search(String s){
+        TrieNode temp =root;
+        for(int i =0;i<s.length();i++){
+            if(temp.children[s.charAt(i)-'a']==null)
+            return false;
+            temp = temp.children[s.charAt(i)-'a'];
+        }
+        return(temp!=null && temp.isEndOfWord);
+    }
+    public int[] solve(String A, String[] B) {
+        initRoot();
+        A=A+'_';
+        String temp="";
+        for(int i=0;i<A.length();i++){
+            if(A.charAt(i) == '_'){
+                insert(temp);
+                temp="";
+            }else{
+                temp+=A.charAt(i);
+            }
+        }
+        ArrayList<pair> list = new ArrayList<pair>();
+        for(int i=0;i<B.length;i++){
+            String s = B[i]+'_';
+            String temp1="";
+            int count=0;
+            for(int j =0 ;j<s.length();j++){
+                if(s.charAt(j) == '_'){
+                    boolean flag=search(temp1);
+                    if(flag){
+                       //System.out.print(temp1+" "+ i+" ");
+                        count++;
+                    }
+                    temp1="";
+                }else{
+                    temp1+=s.charAt(j);
+                }
+            }
+            pair p = new pair(i,count);
+            list.add(p);
+        }
+     Collections.sort(list,new comp());
+     int ans [] = new int[list.size()];
+     for(int i=0;i<list.size();i++){
+        // System.out.print(list.get(i).index+" ");
+         ans[i] = list.get(i).index;
+     }
+     return ans;
+    }
+
+   
+}
+  class  pair{
+     int index;
+     int count;
+     pair(int index,int count){
+         this.index = index;
+         this.count = count;
+}
+}
+     class TrieNode{
+        TrieNode children[]= new TrieNode[26];
+        boolean isEndOfWord;
+         TrieNode(){
+            isEndOfWord =false;
+            for(int i =0;i<26;i++)
+                children[i] = null;
+        }
+}
+ class comp implements Comparator<pair>{
+   public  int compare(pair p1,pair p2){
+       if(p1.count == p2.count){
+           return p1.index-p2.index;
+       }
+       return p2.count-p1.count;
+   }
+}
