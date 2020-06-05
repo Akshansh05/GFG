@@ -6,7 +6,7 @@ public class Solution {
     void insert(String s){
         TrieNode temp =root;
         for(int i =0;i<s.length();i++){
-            if(temp.children[s.charAt(i)-'a']==null && !search(s)){
+            if(temp.children[s.charAt(i)-'a']==null){
                 temp.children[s.charAt(i)-'a'] = new TrieNode();
             }
                 temp = temp.children[s.charAt(i)-'a'];
