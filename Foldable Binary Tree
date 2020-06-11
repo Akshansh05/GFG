@@ -1,0 +1,17 @@
+class Tree {
+    boolean IsFoldable(Node node) 
+	{   if(node ==null)
+	        return true;
+	        if(node.left !=null && node.right!=null || (node.left ==null && node.right==null))
+	    	return helper(node.left,node.right);
+	    	return false;
+	}
+	boolean helper(Node A,Node B){
+	    if(A==null && B==null)
+	        return true;
+	    if(A==null || B==null) 
+	        return false;
+	   
+	   return (helper(A.left,B.right)&&helper(A.right,B.left)); 
+	}
+}
