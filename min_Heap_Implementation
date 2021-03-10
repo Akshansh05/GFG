@@ -1,0 +1,90 @@
+//collections by default
+func minheapify( int i){
+
+int l =left(i);
+int r = right(i);
+smallest =i;
+
+if(i< n && a[l]<a[smallest])
+	smallest =l;
+
+if(i<n && a[r]<a[smallest])
+	smallest =r;
+
+	if(smallest !=i){
+		swap(a[smallest],a[i]);
+		minheapify(smallest);
+
+	}
+}
+
+ //pq.addAll() adds all elements of array to empty heap initially with array here n is heap size can be incremented or decremented n<=a.length()-1(capacity of heap)
+func makeHeap(inta[],int n){
+	
+   int i = (n-1)/2;
+
+	while(i>=0){
+		minheapify(i);
+		i--;
+
+          }
+}
+
+//pq.peek()
+func getMin(int a[],int n){
+	if(n <0){
+	return;
+		}
+
+	return a[0];
+}
+
+//pq.poll()
+func extractMin(int a[],int n){
+
+	if(n <0){
+	return;
+		}
+	if(n == 0){
+		return a[0];
+	
+	}
+	int root =a[0];
+	h[0] = h[n-1];//take last ele
+	n--;//reduce size here n is heap size can be incremented or decremented n<=a.length()-1 (capacity of heap)
+	minheapify(0);
+
+	return root;
+}
+
+//all three can be obtained from iterator
+func parent(int i){
+	return (i-1)/2;
+}
+
+func left(int i){
+	return (2*i+1);
+}
+
+func right(int i){
+	return (2*i+2);
+}
+
+//pq.add() 
+func insertKey(int k ,int a[],int n){
+	if(n ==a.length())
+		return; //full capacity 
+
+	n++; //increase size
+	int i=n-1 //last index
+       a[i] =k; // add at last
+
+ //maintain heap property
+	while(i!=0 && a[parent(i)] > a[i]){
+		swap(a[parent(i)],a[i]); //swap node values
+		i=parent(i); updated i will be parent's index ie (i-1)/2
+	}
+  
+
+
+}
