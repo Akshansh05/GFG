@@ -80,7 +80,7 @@ func insertKey(int k ,int a[],int n){
        a[i] =k; // add at last
 
  //maintain heap property
-	while(i!=0 && a[parent(i)] > a[i]){
+	while(i!=0 && a[parent(i)] > a[i]){ //while parent in min heap is greater than child 
 		swap(a[parent(i)],a[i]); //swap node values
 		i=parent(i); updated i will be parent's index ie (i-1)/2
 	}
