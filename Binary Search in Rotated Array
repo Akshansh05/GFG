@@ -1,0 +1,62 @@
+class Solution {
+   static int p=-1;
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high =nums.length-1;
+        
+             p =getpiv(nums,low,high);
+        
+        if(p== -1){
+            return bs(nums,low,high,target);
+        }
+        if(high<low)
+            return -1;
+                 
+        if(nums[p]==target){
+            return p;
+        }
+        if(nums[low]<=target){
+        return bs(nums,low,p-1,target);   
+        }else{
+         return bs(nums,p+1,high,target); 
+        }
+
+}
+ 
+    public static int getpiv(int[] nums,int low,int high){
+        if(high<low)
+            return -1;
+        if(low == high)
+            return low;
+        
+       int mid=(low+high)/2;
+        if(mid<high && nums[mid]>nums[mid+1]){
+            return mid;
+        }
+        if(mid>low && nums[mid]<nums[mid-1]){
+            return mid-1;
+        }
+        if(nums[0]>=nums[mid]){
+            return getpiv(nums,low,mid-1);
+        }else{
+            return getpiv(nums,mid+1,high);
+        }
+    }
+    
+    public static int bs(int nums[],int low,int high,int target){
+        if(high<low)
+            return -1;
+    
+    int mid = (low+ high)/2;
+        
+        if(nums[mid] == target)
+            return mid;
+        if(target <nums[mid]){
+            return bs(nums,low,mid-1,target);
+        }
+        else{
+            return bs(nums,mid+1,high,target);
+        }
+    }
+        
+    }
