@@ -1,0 +1,30 @@
+class Solution {
+    int c =0;
+    public int kthSmallest(TreeNode root, int k) {
+           
+    TreeNode val =helper(root,k);
+        
+        return val.val;
+        
+    }
+    
+    public TreeNode helper(TreeNode root,int k){
+        
+         if(root ==null)
+            return root;                
+        
+         TreeNode left = helper(root.left ,k);
+        
+            if(left !=null){
+                return left;
+            }
+        c++;
+        
+            if(c==k){
+                return root;
+            }
+        
+        return helper(root.right,k);    
+        
+    }
+}
