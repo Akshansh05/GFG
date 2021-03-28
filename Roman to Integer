@@ -1,0 +1,59 @@
+class Solution {
+    public int romanToInt(String s) {
+        
+        if(s.length()==1){
+            return val(s.charAt(0));
+        }
+        
+        int result=0;
+        
+       for(int i=0;i<s.length();i++){
+           char s1 = s.charAt(i);
+            
+           if(i+1 < s.length()){
+               char s2 = s.charAt(i+1);
+               if(val(s2) > val(s1)){
+                   result +=val(s2)-val(s1);
+                   i++;
+               }else{
+                   result+=val(s1);
+               }
+           }else{
+               result+=val(s1);
+           }
+       }
+            return result;  
+    
+             
+ }
+            
+    public static int val(char s){
+        
+        if(s=='I'){
+             return 1;
+        }
+           
+        if(s == 'V'){
+             return 5;
+        }
+       if(s=='X'){
+             return 10;
+        }
+           
+        if(s == 'L'){
+             return 50;
+        } 
+        if(s=='C'){
+             return 100;
+        }
+           
+        if(s == 'D'){
+             return 500;
+        }
+        if(s=='M'){
+            return 1000;
+        }
+        return -1;
+    }
+    
+}
