@@ -1,0 +1,24 @@
+class Solution {
+    public int findMin(int[] a) {
+        
+        int low =0;
+        int high = a.length-1;
+        int mid;
+        
+        while(low <= high){
+            mid =(low+high)/2;
+            
+            if(a[mid]==a[high]){
+                return a[mid];
+                
+            }
+            if(a[mid]>a[high]){
+                low =mid+1;
+            }else{
+                high=mid;
+            }
+        }
+         return -1;
+        
+    }
+}
