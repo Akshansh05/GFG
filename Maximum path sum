@@ -1,23 +1,24 @@
-class GfG
-{
-     static int value=Integer.MIN_VALUE;
-    public static int maxPathSum(Node root)
-    {
-        // your code here
-        value=Integer.MIN_VALUE;
+class Solution {
+    int value =Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+       
         path(root);
-        int r=value;
-        return r;
+        return value;
     }
-    public static int path(Node root){
-        if(root == null)
-            return Integer.MIN_VALUE;
-        if(root.left == null && root.right == null)
-             return root.data;
-        int left =path(root.left);
-        int right=path(root.right);
-        if(root.left != null && root.right != null)
-            value=Math.max(value,(left+right+root.data));
-            return Math.max(left,right)+root.data;
+    
+    public int path(TreeNode root){
+           int left,right;             
+        if(root.left !=null){
+            left = Math.max(0,path(root.left));
+        }else{
+            left=0;
+        }
+        if(root.right !=null){
+            right =Math.max(0,path(root.right));
+        }else{
+            right =0;
+        }
+        value = Math.max(value,(left+right+root.val));
+        return Math.max(left,right)+root.val;
     }
 }
