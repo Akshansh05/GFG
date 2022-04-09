@@ -1,0 +1,43 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {    
+    public static void main(String[] args) {
+        String s [] = new String[]{"2", "1", "+", "3", "*" };
+        String s2 [] = new String[]{"4", "13", "5", "/", "+"};
+        System.out.println(eval(s));
+        System.out.println(eval(s2));
+
+    }
+    public static int eval(String str[]){
+        
+        String op ="+-/*";
+        
+        Stack<String> st = new Stack<String>();
+        for(String s:str){
+            if(!op.contains(s)){
+                st.push(s);
+            }else{
+                int a = Integer.parseInt(st.pop());
+                int b = Integer.parseInt(st.pop());
+                switch(s){
+                   case "+":
+                       st.push(String.valueOf(b+a));
+                       break;
+                    case "-":
+                     st.push(String.valueOf(b-a));
+                       break; 
+                     case "/":
+                       st.push(String.valueOf(b/a));
+                       break;
+                    case "*":
+                     st.push(String.valueOf(b*a));
+                       break;    
+                }
+            }
+        }
+        return Integer.valueOf(st.pop());
+    }
+}
