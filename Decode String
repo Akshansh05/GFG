@@ -1,0 +1,70 @@
+class Solution {
+    public String decodeString(String s) {
+        
+        Stack<String>st = new Stack<String>();
+        
+        StringBuffer out =new StringBuffer("");
+
+        for(int i=0;i<s.length();i++){
+
+        char c= s.charAt(i);
+            
+            if(c ==']'){
+            String subout ="";
+
+                while(!st.isEmpty() && !st.peek().equals("[")){
+                    subout+=st.pop();
+                   // System.out.println(subout);
+                }
+                st.pop();
+                StringBuffer num = new StringBuffer("");
+                while(!st.isEmpty() && Character.isDigit(st.peek().charAt(0))){
+                   num.append(st.pop()); 
+                }
+                num.reverse();
+                int n = 0;
+                try{
+                    n =  Integer.valueOf(String.valueOf(num));
+                }catch(NumberFormatException e){
+                    n =0;
+                }
+                   
+                String t="";
+                while(n-->0){
+                    t+=subout;
+                }
+                st.push(t);
+
+            }
+            else{
+                st.push(String.valueOf(c));
+            }
+        }
+        
+        while(!st.isEmpty()){
+            out.append(st.pop());
+        }
+        
+        out.reverse();
+        
+        return String.valueOf(out);
+            
+
+}
+    
+}
+
+
+
+Example 1:
+
+Input: s = "3[a]2[bc]"
+Output: "aaabcbc"
+Example 2:
+
+Input: s = "3[a2[c]]"
+Output: "accaccacc"
+Example 3:
+
+Input: s = "2[abc]3[cd]ef"
+Output: "abcabccdcdcdef"
