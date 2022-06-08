@@ -1,0 +1,36 @@
+class Solution{
+    
+    HashMap<Tree,Tree> map = new HashMap<Tree,Tree>();
+    public Tree cloneTree(Tree tree){
+       // add code here.
+       
+       Tree cloned = clonedTree(tree);
+       copyRandom(tree,cloned);
+       return cloned;
+
+}
+
+public Tree clonedTree(Tree tree){
+    
+       if(tree == null){
+           return tree;
+       }
+       Tree clone  = new Tree(tree.data);
+       clone.left = cloneTree(tree.left);
+       clone.right = cloneTree(tree.right);
+       
+       //if we traverse here will miss he indorder traversal type
+       map.put(tree,clone);
+       return clone;
+     }
+     
+     
+     public void copyRandom(Tree tree,Tree cloned){
+    
+       if(cloned == null)
+         return;
+       cloned.random = map.get(tree.random);
+       copyRandom(tree.left, cloned.left);
+       copyRandom(tree.right, cloned.right);
+}
+}
