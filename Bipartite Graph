@@ -1,5 +1,6 @@
 class Solution
 {
+        //no two adjacent node has same colour 
     public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
     {
         // Code here
