@@ -1,0 +1,37 @@
+class Tree {
+    // Function to delete a node from BST.
+    public static Node deleteNode(Node root, int X) {
+        // code here.
+        
+        if(root == null){
+            return root;
+        }
+        
+        //recurse down the tree until X==root.data
+        if(X <root.data){
+            root.left = deleteNode(root.left,X);
+        }
+        else if  (X>root.data){
+            root.right = deleteNode(root.right,X);
+        }else{
+            if(root.left ==null){
+                return root.right;
+            }else if(root.right == null){
+                return root.left;
+            }else{
+                root.data = getMinInRightSubtree(root.right);
+                //recurcively delete the getMinInRightSubtree value
+                root.right= deleteNode(root.right,root.data);
+            }
+        }
+        return root;
+    }
+    public static int getMinInRightSubtree(Node root){
+        int min = root.data;
+        while(root.left !=null){
+            min = root.left.data;
+            root = root.left ;
+        }
+        return min;
+    }
+}
