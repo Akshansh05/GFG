@@ -1,0 +1,28 @@
+class Solution {
+         HashMap<Integer,Node> m = new HashMap<Integer,Node>();
+    public Node cloneGraph(Node node) {
+        
+        return clone(node);
+        
+    }
+    
+    public Node clone(Node node){
+        
+            if(node == null){
+                return node;
+            }
+        
+        if(m.containsKey(node.val)){
+            return m.get(node.val);
+        }
+        
+        Node newNode  = new Node(node.val,new <Node>ArrayList());
+        m.put(newNode.val,newNode);
+        
+        for(Node n : node.neighbors){
+            newNode.neighbors.add(clone(n));
+           
+        }
+        return newNode;
+    }
+}
