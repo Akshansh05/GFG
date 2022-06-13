@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> list= new ArrayList<String>();
+        if(n>0)
+            helper("",n,n,list);
+        return list;
+    }
+    
+    void helper(String s,int l,int r,List<String> list){
+        
+        if(l==0 && r==0)
+            list.add(s);
+        
+         if(l>0)
+            helper(s+"(",l-1,r,list);
+        
+         if(l<r)
+             helper(s+")",l,r-1,list);         
+        
+    }
+    
+}
