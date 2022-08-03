@@ -7,14 +7,18 @@ class MedianFinder {
         minHeap = new PriorityQueue<Integer>();
     }
     
+    // maxHeap |medium| minHeap 
+    
     public void addNum(int num) {
         
+        //if num is less than max from the left side (maxHeap) insert in left side (max heap) else insert in right Side(min heap)
         if(maxHeap.isEmpty()  || num < maxHeap.peek()){
             maxHeap.add(num);
         }else{
             minHeap.add(num);
         }
         
+        // the two heap sie differance should not exceed more than 1 so balance them 
         if(maxHeap.size()>minHeap.size()+1){
             minHeap.add(maxHeap.poll());
         }else if(minHeap.size()>maxHeap.size()+1){
@@ -24,6 +28,7 @@ class MedianFinder {
     
     public double findMedian() {
         
+        //if same size find average else return 1st element from  greater sized heap 
         if(minHeap.size() == maxHeap.size()){
             return (double) (minHeap.peek()+maxHeap.peek())/2;
         }else if(minHeap.size() >maxHeap.size()){
