@@ -36,3 +36,47 @@ class GFG
 }
 }
 }
+
+
+
+class Solution {
+    public void sortColors(int[] a) {
+        
+       // dutch flag
+      // https://www.youtube.com/watch?v=oaVa-9wmpns&ab_channel=takeUforward
+        
+        int low =0;
+        int mid =0;
+        
+        int high = a.length-1;
+        
+        while(mid <=high){
+            
+            switch(a[mid]){
+                    
+                case 0:{
+                swap(low++,mid++,a);
+                    break;
+
+                }
+                case 1:{
+                    mid++;
+                    break;
+                }
+                case 2:{
+                    swap(mid,high--,a);
+                    break;
+                }
+                    
+            }
+        }
+        
+    }
+    
+    public void swap(int i,int j,int a[]){
+        
+        int temp = a[i];
+        a[i] =a[j];
+        a[j]=temp;
+    }
+}
