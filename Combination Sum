@@ -1,0 +1,29 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    List<List<Integer>> ans = new ArrayList<>();
+    List<Integer> ds =new ArrayList<>();
+    help(candidates,0,0,target,ds,ans);
+    return ans;
+    }
+
+    void help(int[] candidates,int cIndex, int cSum, int target, List<Integer>ds ,List<List<Integer>> ans){
+
+        if(cIndex>=candidates.length){
+            if(cSum==target){
+                ans.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+        if(cSum <= target){
+        ds.add(candidates[cIndex]);
+        cSum+=candidates[cIndex];
+        help(candidates,cIndex,cSum,target,ds,ans);
+        ds.remove(ds.size()-1);
+        cSum-=candidates[cIndex];
+        }
+        help(candidates,cIndex+1,cSum,target,ds,ans);
+
+
+    }
+
+}
