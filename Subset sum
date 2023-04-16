@@ -1,0 +1,23 @@
+class Solution{
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        ArrayList<Integer>ds = new ArrayList<Integer>();
+        
+        help(arr,N,0,0,ans,ds);
+        return ans;
+    }
+    
+    void help(ArrayList<Integer> arr, int N,int cIndex,int cSum, ArrayList<Integer> ans, ArrayList<Integer> ds){
+        
+        if(cIndex==N){
+            ans.add(cSum);
+            return;
+        }
+        ds.add(arr.get(cIndex));
+        cSum+=arr.get(cIndex);
+        help(arr,N,cIndex+1,cSum,ans,ds);
+        ds.remove(ds.size()-1);
+        cSum-=arr.get(cIndex);
+        help(arr,N,cIndex+1,cSum,ans,ds);
+    }
+}
