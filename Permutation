@@ -1,0 +1,63 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans = new ArrayList();
+        List<Integer> ds = new ArrayList(); 
+        for(int i=0;i<nums.length;i++){
+                ds.add(nums[i]);
+        }
+        perm(ans,0,ds);
+        return ans;
+    }
+    void perm(List<List<Integer>> ans,int cIndex , List<Integer> nums ){
+
+        if(cIndex == nums.size()){
+            ans.add(new ArrayList<>(nums));
+            return;
+        }
+
+        for(int i=cIndex;i<nums.size();i++){
+            swap(cIndex,i,nums);
+            perm(ans,cIndex+1,nums);
+            swap(cIndex,i,nums);
+        }
+    }
+    void swap(int a ,int b,List<Integer> nums){
+        int aVal =nums.get(a);
+        int bVal=nums.get(b);
+        nums.set(a,bVal);
+        nums.set(b,aVal);
+    }
+}
+/////////////////////////////////////////////////////////////////////////////
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans = new ArrayList();
+        List<Integer> num = new ArrayList(); 
+        List<Integer> ds = new ArrayList(); 
+        boolean flag[] = new boolean [nums.length];
+
+        for(int i=0;i<nums.length;i++){
+                num.add(nums[i]);
+                flag[i]=false;
+        }
+        perm(ans,num,ds,flag);
+        return ans;
+    }
+    void perm(List<List<Integer>> ans, List<Integer> nums, List<Integer> ds,boolean flag[] ){
+
+        if(ds.size() == nums.size()){
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+
+        for(int i=0;i<nums.size();i++){
+           if(flag[i]==false){
+               flag[i]=true;
+               ds.add(nums.get(i));
+               perm(ans,nums,ds,flag);
+               ds.remove(ds.size()-1);
+               flag[i]=false;
+           }
+        }
+    }
+}
