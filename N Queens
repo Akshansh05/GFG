@@ -1,0 +1,51 @@
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        
+        int lRow[] = new int[n];
+        int uD[] = new int[2*n-1];
+        int lD[] = new int[2*n-1];
+        String board[] =new String[n];
+
+        for(int i=0;i<n;i++){
+            String s="";
+            for(int j=0;j<n;j++){
+                s+=".";
+            }
+            board[i]=s;
+        }
+        Arrays.fill(lRow,0);
+        Arrays.fill(uD,0);
+        Arrays.fill(lD,0);
+       List<List<String>> ans = new ArrayList<>();
+       help(n,board,0,lRow,uD,lD,ans);
+       return ans; 
+    }
+
+    void help(int n, String board[],int cCol, int lRow[],int ud[],int ld[], List<List<String>> ans){
+
+        if(n==cCol){
+            ans.add(new ArrayList<>(Arrays.asList(board)));
+            return;
+        }
+        for(int i=0;i<n;i++){
+           if(lRow[i] == 0 && ud[cCol+i] ==0 && ld[n-1+i-cCol] ==0){
+               
+            StringBuffer sb = new StringBuffer(board[i]);
+            sb.setCharAt(cCol,'Q');
+            board[i] = sb.toString();
+            lRow[i]=1;
+            ud[cCol+i]=1;
+            ld[n-1+i-cCol]=1;
+
+            help(n,board,cCol+1,lRow,ud,ld,ans);
+
+            StringBuffer sb1 = new StringBuffer(board[i]);
+            sb1.setCharAt(cCol,'.');
+            board[i] = sb1.toString();
+            lRow[i]=0;
+            ud[cCol+i]=0;
+            ld[n-1+i-cCol]=0;
+           }
+        }
+    }
+}
