@@ -1,0 +1,62 @@
+
+class Solution {
+    
+   static List<String> dir = new ArrayList<String>();
+   static int arrI[] =new int[]{1,0,0,-1};
+   static int arrJ[] =new int[]{0,-1,1,0};
+  
+    public static ArrayList<String> findPath(int[][] m, int n) {
+        // Your code here
+        
+          dir.add("D");
+          dir.add("L");
+          dir.add("R");
+          dir.add("U");
+        
+        ArrayList<String>ans = new ArrayList<String>();
+        String s = new String();
+        int vis[][]=new int [n][n];
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                vis[i][j]=0;
+        }
+    }
+    if(m[0][0]==1){
+        vis[0][0]=1;
+      help(m,vis,0,0,n,ans,s);
+    }
+    return ans;
+}
+        static void help(int[][] m,int vis[][],int r, int c ,int n ,ArrayList<String>ans ,String s){
+            
+            if(r>=n || c>=n){
+                return;
+            }
+            if(r == n-1 && c ==n-1){
+                ans.add(s);
+                return;
+            }
+            for(int i=0; i<4;i++){
+                
+                if (isOkay(m,vis,r+arrI[i],c+arrJ[i],n)){
+                     vis[r+arrI[i]][c+arrJ[i]]=1;
+                    s =s+dir.get(i);
+                    help(m,vis,r+arrI[i],c+arrJ[i],n,ans,s);
+                    vis[r+arrI[i]][c+arrJ[i]]=0;
+                   s = s.substring(0,s.length()-1);
+            }
+            
+        }
+    }
+        
+       static  boolean isOkay(int[][] m,int vis[][],int i, int j , int n){
+            if(i >=0 && j >=0 && i <  n && j < n && m[i][j] ==1 && vis[i][j]==0){
+                return true;
+            }
+            return false;
+        }
+
+}
+
+
