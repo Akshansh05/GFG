@@ -75,3 +75,10 @@ public class UnionFind {
         }
     }
 }
+
+
+/* 
+Output 
+ Not Same 
+ Same
+*/  
