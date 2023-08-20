@@ -1,0 +1,36 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+
+        int dp[][] = new int[coins.length][amount+1];
+
+            for (int[] r : dp) {
+                Arrays.fill(r, -1);
+            }
+            int val = helper(coins.length-1,amount,dp,coins);
+         return val == Integer.MAX_VALUE-1 ? -1 : val;
+    }
+
+        int helper(int index , int target , int dp[][],int[] coins){
+
+            if(index == 0){
+                if(target % coins[0] == 0){
+                    return target /coins[0];  //think of amount as 12 and coin as 4 
+                }else{
+                    return Integer.MAX_VALUE-1;
+                }
+            }
+
+            if(dp[index][target]!=-1){
+                return dp[index][target];
+            }
+            int notTake  = helper(index-1,target,dp,coins);
+
+            int take =Integer.MAX_VALUE;
+            if(coins[index]<= target){
+            take =  1+ helper(index,target-coins[index],dp,coins);
+            }
+            return dp[index][target] = Math.min(take,notTake);
+
+        }
+        
+}
