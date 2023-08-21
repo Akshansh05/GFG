@@ -1,3 +1,13 @@
+
+boolean main(){
+
+        int dp[][] =new int [nums.length+1][sum +1];
+
+             for(int r[]:dp)
+                Arrays.fill(r,-1);
+        return subsetSum(nums,nums.length-1,sum,dp); 
+}
+
 boolean subsetSum(int[] nums , int index , int sum, int dp[][]){
         if(index == 0){
             if(sum == nums[0]){
