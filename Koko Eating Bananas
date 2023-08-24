@@ -1,0 +1,55 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+    
+        int max=Integer.MIN_VALUE;
+
+        for(int i=0;i<piles.length;i++){
+            max = Math.max(max,piles[i]);
+        }
+
+        int low  =0;    
+        int  high = max;
+
+        int ans = 0;
+        while(low <=high){
+
+            int mid = low +(high-low)/2;
+
+            if(mid !=0 && isValid(mid,h ,piles)){
+                      ans = mid;
+                     high = mid -1;
+            }else{
+                low  =mid+1;
+            }
+        }
+
+        return ans;
+        
+    }
+     boolean isValid(int mid, int n ,int[] nums){
+            int counter =0;
+    
+            for(int i =0 ;i<nums.length;i++){ 
+
+           int quotient = nums[i]/mid;
+
+           counter += quotient;
+
+
+           int remainder = nums[i]%mid ;
+
+            if(remainder !=0){
+                counter =counter+1;
+            }else{
+                counter =counter;
+            }
+                
+            if(counter > n){
+                return false;
+            }
+            }
+            return true;
+    }
+
+
+    }
