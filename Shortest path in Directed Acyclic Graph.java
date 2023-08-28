@@ -3,6 +3,7 @@ class Solution {
 	public int[] shortestPath(int N,int M, int[][] edges) {
 	
 		//Code here
+		// from given source to all nodes .
 		
 		//steps  1.do topo sort 
 		//2.   do      distance[child.child] = Math.min(distance[child.child],distanceOfSourceToCurrToChild);
