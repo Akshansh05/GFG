@@ -1,0 +1,90 @@
+class Solution {
+
+    public int Solve(int n, int[][] edge) {
+        // Code here
+        
+        
+        DisjointSet ds = new DisjointSet(n);
+        
+        int extraEdges =0;
+        
+        int components =0;
+        
+     for(int i =0 ; i<edge.length ;i++ ){
+        
+        int u = edge[i][0];
+        int v = edge[i][1];
+           //union find standard procedure 
+        if(ds.findParent(u) == ds.findParent(v)){
+            extraEdges ++;  //count number of extra edges not resposible for that component to be connected
+        }else{
+             ds.unionByRank(u,v);
+        }
+        
+    }
+
+      //count number of connected components
+    for(int i=0; i<n;i++){
+        if(ds.findParent(i) == i){
+            components++;
+        }
+    }
+    int ans =components-1;
+    
+    if(extraEdges >=ans){
+        return ans;
+    }
+    return -1;
+        
+        
+    }
+    
+     static class DisjointSet{
+     
+     int parent[];
+     int rank[];
+     
+     int size ;
+     
+     
+     public DisjointSet(int size){
+         
+        this.size =size;
+       parent  = new int[size+1];
+       rank   = new int[size+1];
+       
+       for(int i =0 ;i <=size;i++){
+           parent[i] =i;
+           rank[i]=0;
+       }
+     }
+     
+     public void unionByRank(int u ,int v){
+         int up = findParent(u);
+         int vp = findParent(v);
+         
+         if(up == vp)
+            return;
+        
+        if(rank[up]< rank[vp]){
+            parent[up] = vp;
+            
+        }else  if(rank[vp]< rank[up]) {
+             parent[vp] = up;
+        }else{
+             parent[vp] = up;
+             rank[up]++;
+        }
+     }
+     
+     public int findParent(int u){
+         
+         if(u ==parent[u]){
+             return u;
+         }
+         
+        return parent[u] = findParent(parent[u]);
+     }
+     
+ }
+}
