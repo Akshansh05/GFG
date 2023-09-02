@@ -52,8 +52,9 @@ class Solution{
         
         if(ds.findParent(u) != ds.findParent(v)){
             sum +=weight;
+              ds.unionByRank(u,v);
         }
-          ds.unionByRank(u,v);
+        
         
     }
     
