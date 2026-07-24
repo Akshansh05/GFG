@@ -5,3 +5,26 @@
 3.Find the relation b/w the states and base cases relate dp[m][n] with previous or next state and define dp[I][0],dp[0][j] ,dp[0][0]
 
 4.Validating the states  find if its true or not
+
+
+                    Recursive Problem
+                           │
+            ┌──────────────┴──────────────┐
+            │                             │
+      Need ALL solutions?          Need BEST/COUNT?
+            │                             │
+          YES                            YES
+            │                             │
+      Backtracking                  Does state repeat?
+            │                             │
+     choose-recurse-undo          ┌────────┴────────┐
+                                  │                 │
+                                 NO               YES
+                                  │                 │
+                             Plain Recursion       DP
+                                                    │
+                                    ┌───────────────┴───────────────┐
+                                    │                               │
+                              2 Choices?                      Many Choices?
+                                    │                               │
+                             Take/Not Take                 Transition DP
